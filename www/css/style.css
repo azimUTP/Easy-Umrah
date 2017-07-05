@@ -1,0 +1,29 @@
+/* Empty. Add your own CSS if you like */
+.fyp-content {
+    background: #05F1FF   ;
+}
+
+.icon {
+   font-size: 50px;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+.img {
+    display: block;
+    margin: 0 auto;
+    width : 50% ; 
+    height : 30%
+}
+/*.img2{
+	display: block;
+    margin: 0 auto;
+    width : 90% ; 
+    height : 30%
+}
+*/
+.item.wrap, .item-content.wrap {
+white-space: normal;
+}
+

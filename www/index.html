@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/service.js"></script>
+    <script src="lib/moment/moment.js"></script>
+    <script src="lib/checklist-model/checklist-model.js"></script>
+    <script src="lib/moment-hijri/moment-hijri.js"></script>
+    <script src="lib/angular-moment/angular-moment.js"></script>
+    
+   
+  </head>
+  <body ng-app="fyp">
+
+    <ion-pane>
+    <ion-nav-bar class="bar-royal" align-title="center">
+      <ion-nav-back-button>
+        
+      </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-nav-view></ion-nav-view>
+
+
+
+              <!--HOME-->
+              <script type="text/ng-template" id="fyp.html">
+                <ion-view view-title="UMRAH">
+                   <ion-content class="fyp-content">
+
+                   <div ng-controller="fypCtrl" align="center" style="background-color: #00FF87 ; padding: 20px; color: #31033A;"> 
+                   <span style="font-size: 1.8em"><b>{{exampleDate}}</b></span>
+                   <br>
+                   <span style="font-size: 1.5em"><b>{{date}}</b></span>
+                   <br>
+                   <span style="font-size: 1.3em"><b>{{hijri}}</b></span>
+                   </div> 
+                   <br>
+                    <span align="center" style="font-size: 1.5em"><b>SELAMAT DATANG KE APPS UMRAH</b></span>
+                   <!-- <img src="img/mecca.jpg" class="img2"> -->
+                   <img src="img/icon.png" class="img" ng-click="goToMenu()" >
+                  <br>
+                   </ion-content>
+                </ion-view>
+              </script>
+
+
+            <!-- MENU -->
+            <script type="text/ng-template" id="menu.html">
+              <ion-view view-title="MENU">
+                 <ion-content class="fyp-content" padding>
+                   <div ng-controller="fypCtrl" align="center" style="background-color: #00FF87 ; padding: 20px; color: #31033A;"> 
+                   <span style="font-size: 1.8em"><b>{{exampleDate}}</b></span>
+                   <br>
+                   <span style="font-size: 1.5em"><b>{{date}}</b></span>
+                   <br>
+                   <span style="font-size: 1.3em"><b>{{hijri}}</b></span>
+                   </div>
+                   <br> 
+                    <center>
+                    <button class="button button-positive" ng-click="goToMenu2()">
+                        <div style="color:#FFFFFF">
+                        <b>PRA-UMRAH</b>
+                        </div>
+                    </button>
+                  <br>
+                  <i class="icon ion-arrow-down-a" ></i>
+                  <br>
+                  <button class="button button-calm" ng-click="goToMenu3()">
+                  <div style="color:#A512FA">
+                       <B>IHRAM / BERMIQAT</B>
+                  </div>
+                  </button>
+                  <br>
+                  <i class="icon ion-arrow-down-a" ></i>
+                  <br>
+                    <button class="button button-balanced" ng-click="goToMenu4()">
+                   <div style="color:#030303">
+                       <B>TAWAF</B>
+                  </div>
+                    </button>
+                  <br>
+                  <i class="icon ion-arrow-down-a" ></i>
+                  <br>
+                 <button class="button button-assertive" ng-click="goToMenu5()">
+
+                  <div style="color:#FFFFFF">
+                  <B>SAIE</B>
+                  </div>
+
+                </button>
+                 <br>
+                  <i class="icon ion-arrow-down-a" ></i>
+                  <br>
+                 <button class="button button-dark" ng-click="goToMenu6()">
+                  <div style="color:#FFFFFF">
+                  <B>SELEPAS UMRAH</B>
+                  </div>
+                   
+                 </button>
+                    </center>
+                 </ion-content>
+              </ion-view>
+            </script>
+
+
+            <!--Pra Umrah-->
+            <script type="text/ng-template" id="praUmrah.html">
+             <ion-view view-title="PRA-UMRAH">
+             <ion-content class="fyp-content" padding>
+
+                   <div ng-controller="fypCtrl" align="center" style="background-color: #00FF87 ; padding: 20px; color: #31033A;"> 
+                   <span style="font-size: 1.8em"><b>{{exampleDate}}</b></span>
+                   <br>
+                   <span style="font-size: 1.5em"><b>{{date}}</b></span>
+                   <br>
+                   <span style="font-size: 1.3em"><b>{{hijri}}</b></span>
+                   </div>
+                   <br> 
+              <div ng-controller="Demo1Ctrl">
+              <label ng-repeat="role in roles">
+                <!-- <input type="checkbox" > 
+                 <span style="font-size: 1.5em"><b></b></span> -->
+                 <ion-list>
+
+                <ion-checkbox checklist-model="user.roles" checklist-value="role.id"><ion-item class="wrap">{{role.text}}</ion-item></ion-checkbox>
+
+              </ion-list> 
+              </label>
+              
+              <ion-list>
+                <ion-radio ng-model="tempat_stop" ng-value="1">Bir Ali</ion-radio>
+                <ion-radio ng-model="tempat_stop" ng-value="2">Tanaim</ion-radio>
+                <ion-radio ng-model="tempat_stop" ng-value="3">Hudaibiah</ion-radio>
+                <ion-radio ng-model="tempat_stop" ng-value="4">Ja'ranah</ion-radio>
+              </ion-list>
+
+              <br>
+              <CENTER>
+              <button class="button button-dark" ng-click="checkAll()">Check all</button>
+              <button class="button button-balanced" ng-click="mula()" ui-sref="ihram" ng-disabled="checked()"><b>MULA</b></button>
+              <button class="button button-assertive" ng-click="uncheckAll()">SET SEMULA</button>
+              </CENTER>
+              <br><br>
+
+            </div>
+
+             </ion-content>
+          </ion-view>
+            </script>
+
+
+            <!--Ihram-->
+            <script type="text/ng-template" id="ihram.html">
+             <ion-view view-title="IHRAM/BERMIQAT">
+             <ion-content class="fyp-content">
+
+                    <div ng-controller="fypCtrl" align="center" style="background-color: #00FF87 ; padding: 20px; color: #31033A;"> 
+                   <span style="font-size: 1.8em"><b>{{exampleDate}}</b></span>
+                   <br>
+                   <span style="font-size: 1.5em"><b>{{date}}</b></span>
+                   <br>
+                   <span style="font-size: 1.3em"><b>{{hijri}}</b></span>
+                   </div>
+                   <br> 
+              <div ng-controller="Demo2Ctrl">
+              <label ng-repeat="role in roles">
+                <!-- <input type="checkbox" > 
+                 <span style="font-size: 1.5em"><b></b></span> -->
+                 <ion-list>
+
+                <ion-checkbox checklist-model="user.roles" checklist-value="role.id"><ion-item class="wrap">{{role.text}}</ion-item></ion-checkbox>
+
+              </ion-list> 
+              </label>
+              <br>
+              <center>
+              <button class="button button-dark" ng-click="checkAll()">Check all</button>
+              <button class="button button-balanced" ng-click="checkAll()" ui-sref="tawaf" ng-disabled="checked()"><B>MULA</B></button>
+              <button class="button button-assertive" ng-click="uncheckAll()">SET SEMULA</button>
+              <br><br>
+              </center>
+
+              <!-- {{ user.roles | json }} -->
+            </div>
+            
+             </ion-content>
+          </ion-view>
+            </script>
+
+            <!--Tawaf-->
+            <script type="text/ng-template" id="tawaf.html">
+             <ion-view view-title="TAWAF">
+             <ion-content class="fyp-content">
+
+                    <div ng-controller="fypCtrl" align="center" style="background-color: #00FF87 ; padding: 20px; color: #31033A;"> 
+                   <span style="font-size: 1.8em"><b>{{exampleDate}}</b></span>
+                   <br>
+                   <span style="font-size: 1.5em"><b>{{date}}</b></span>
+                   <br>
+                   <span style="font-size: 1.3em"><b>{{hijri}}</b></span>
+                   </div>
+                   <br> 
+            <div ng-controller="Demo3Ctrl">
+              <label ng-repeat="role in roles">
+                <!-- <input type="checkbox" > 
+                 <span style="font-size: 1.5em"><b></b></span> -->
+                 <ion-list>
+
+                <ion-checkbox checklist-model="user.roles" checklist-value="role.id"><ion-item class="wrap">{{role.text}}</ion-item></ion-checkbox>
+
+              </ion-list> 
+              </label>
+              <br>
+              <CENTER>              
+              <button class="button button-dark" ng-click="checkAll()">Check all</button>
+              <button class="button button-balanced" ng-click="checkAll()" ui-sref="saie" ng-disabled="checked()"><b>MULA</b></button>
+              <button class="button button-assertive" ng-click="uncheckAll()">SET SEMULA</button>
+              </CENTER>
+              <br><br>
+              <!-- {{ user.roles | json }} -->
+            </div>
+             </ion-content>
+          </ion-view>
+            </script>
+
+           <!--Saie-->
+            <script type="text/ng-template" id="saie.html">
+             <ion-view view-title="SAIE">
+             <ion-content class="fyp-content">
+
+            <div ng-controller="fypCtrl" align="center" style="background-color: #00FF87 ; padding: 20px; color: #31033A;"> 
+           <span style="font-size: 1.8em"><b>{{exampleDate}}</b></span>
+           <br>
+           <span style="font-size: 1.5em"><b>{{date}}</b></span>
+           <br>
+           <span style="font-size: 1.3em"><b>{{hijri}}</b></span>
+           </div>
+           <br> 
+            <div ng-controller="Demo4Ctrl">
+              <label ng-repeat="role in roles">
+                <!-- <input type="checkbox" > 
+                 <span style="font-size: 1.5em"><b></b></span> -->
+                 <ion-list>
+
+                <ion-checkbox checklist-model="user.roles" checklist-value="role.id"><ion-item class="wrap">{{role.text}}</ion-item></ion-checkbox>
+
+              </ion-list> 
+              </label>
+              <br>
+              <CENTER>
+              <button class="button button-dark" ng-click="checkAll()">Check all</button>
+              <button class="button button-balanced" ng-click="checkAll()" ui-sref="post" ng-disabled="checked()"><b>MULA</b></button>
+              <button class="button button-assertive" ng-click="uncheckAll()">SET SEMULA</button>
+              </CENTER>
+              <br><br>
+              <!-- {{ user.roles | json }} -->
+            </div>
+             </ion-content>
+          </ion-view>
+            </script>
+
+             <!--Post-->
+            <script type="text/ng-template" id="post.html">
+             <ion-view view-title="SELEPAS UMRAH">
+             <ion-content class="fyp-content">
+
+            <div ng-controller="fypCtrl" align="center" style="background-color: #00FF87 ; padding: 20px; color: #31033A;"> 
+           <span style="font-size: 1.8em"><b>{{exampleDate}}</b></span>
+           <br>
+           <span style="font-size: 1.5em"><b>{{date}}</b></span>
+           <br>
+           <span style="font-size: 1.3em"><b>{{hijri}}</b></span>
+           </div>
+           <br> 
+             <div ng-controller="checkCtrl">
+              <label ng-repeat="role in roles">
+                <!-- <input type="checkbox" > 
+                 <span style="font-size: 1.5em"><b></b></span> -->
+                 <ion-list>
+            <ion-checkbox checklist-model="user.roles" checklist-value="role.id"><ion-item class="wrap"><span style="font-size: 1.0em"><b>{{role.text}}</b></span></ion-item></ion-checkbox>
+            </ion-list> 
+              </label>
+             <br>
+             <CENTER>
+              <button class="button button-dark" ng-click="checkAll()">Check all</button>
+              <button class="button button-balanced" ng-click="ticked()" ng-disabled="checked()"><b>CHECK</b></button>
+              <button class="button button-assertive" ng-click="uncheckAll()">Reset</button>
+              </CENTER>
+              <br><br>
+             </ion-content>
+          </ion-view>
+            </script>
+
+           <!--Dam-->
+            <script type="text/ng-template" id="dam.html">
+             <ion-view view-title="DAM">
+             <ion-content class="fyp-content">
+
+            <div ng-controller="fypCtrl" align="center" style="background-color: #00FF87 ; padding: 20px; color: #31033A;"> 
+           <span style="font-size: 1.8em"><b>{{exampleDate}}</b></span>
+           <br>
+           <span style="font-size: 1.5em"><b>{{date}}</b></span>
+           <br>
+           <span style="font-size: 1.3em"><b>{{hijri}}</b></span>
+           </div>
+           <br> 
+             <div ng-controller="damListCtrl">
+                {{checked}}  
+                Dam: 
+                <div align="center" style="background-color: #B13BAE; padding: 20px; color: white;" ng-repeat="dam in result"><span style="font-size: 1.2em">{{dam}}</span></div>
+<!--                 Penjelasan: 
+                <div ng-repeat="dam in result">{{damDesc}}</div> -->
+
+                <!-- description:{{damDesc}} -->
+              </div>
+             </ion-content>
+          </ion-view>
+            </script>
+
+
+
+
+
+
+<!--       <div class ="bar bar-footer bar-royal">
+      <div class= "title">Umrah &copy; 2017</div> -->
+      </div>
+
+    </ion-pane>
+  </body>
+
+</html>

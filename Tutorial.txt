@@ -1,0 +1,6 @@
+FYP startup
+
+1. Open myApp
+2.Open Git Bash
+3. run Ionic Serve --lab
+4. 
